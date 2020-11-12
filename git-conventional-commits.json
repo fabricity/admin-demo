@@ -17,7 +17,6 @@
     "releaseTagGlobPattern": "v[0-9]*.[0-9]*.[0-9]*",
     "issueRegexPattern": "(^|\\s)#\\d+(\\s|$)"
   },
-
   "changelog" : {
     "commitTypes": [
       "feat",
@@ -33,9 +32,8 @@
       "merge": "Merged Branches",
       "breakingChange": "BREAKING CHANGES"
     },
-
-    "commitUrl": "https://github.com/ACCOUNT/REPOSITORY/commit/%commit%",
-    "commitRangeUrl": "https://github.com/ACCOUNT/REPOSITORY/compare/%from%...%to%?diff=split",
-    "issueUrl": "https://github.com/ACCOUNT/REPOSITORY/issues/%issue%"
+    "commitUrl": "https://github.com/fabricity/admin-demo/commit/%commit%",
+    "commitRangeUrl": "https://github.com/fabricity/admin-demo/compare/%from%...%to%?diff=split",
+    "issueUrl": "https://github.com/fabricity/admin-demo/issues/%issue%"
   }
 }
