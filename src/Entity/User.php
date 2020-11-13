@@ -19,17 +19,17 @@ class User implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private string $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private string $password;
 
     public function getId(): ?int
     {
@@ -60,16 +60,20 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles()
+    /**
+     * @return string[]
+     */
+    public function getRoles(): array
     {
         return ['ROLE_USER'];
     }
 
-    public function getSalt()
+    public function getSalt(): ?string
     {
+        return null;
     }
 
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
     }
 }

@@ -25,16 +25,20 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
-    private $csrfTokenManager;
 
-    private $entityManager;
-    private $passwordEncoder;
-    private $urlGenerator;
+    private CsrfTokenManagerInterface $csrfTokenManager;
+    private EntityManagerInterface $entityManager;
+    private UserPasswordEncoderInterface $passwordEncoder;
+    private UrlGeneratorInterface $urlGenerator;
 
     public const HOME_ROUTE = 'app_dashboard';
     public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        UrlGeneratorInterface $urlGenerator,
+        CsrfTokenManagerInterface $csrfTokenManager,
+        UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
@@ -42,12 +46,15 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
-    public function getCredentials(Request $request)
+    /**
+     * @return array<string, string>
+     */
+    public function getCredentials(Request $request): array
     {
         $credentials = [
             'username' => $request->request->get('username'),
@@ -70,7 +77,7 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
         return $credentials['password'];
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider): UserInterface
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
@@ -87,7 +94,7 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
         return $user;
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): RedirectResponse
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
@@ -96,13 +103,13 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
         return new RedirectResponse($this->urlGenerator->generate(self::HOME_ROUTE));
     }
 
-    public function supports(Request $request)
+    public function supports(Request $request): bool
     {
         return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
-    protected function getLoginUrl()
+    protected function getLoginUrl(): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
