@@ -41,6 +41,7 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "9999999-dev",
         "phpstan/phpstan": "0.12.x-dev",
         "symfony/browser-kit": "^5.1",
         "symfony/css-selector": "^5.1",
@@ -89,6 +90,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "phpcs": "php-cs-fixer fix",
         "phpstan": "phpstan analyse src"
     },
     "conflict": {
