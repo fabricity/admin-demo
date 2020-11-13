@@ -81,6 +81,12 @@
     "egulias/email-validator": {
         "version": "2.1.23"
     },
+    "fabricity/admin-bundle": {
+        "version": "dev-develop"
+    },
+    "fabricity/admin-lte-bundle": {
+        "version": "dev-develop"
+    },
     "laminas/laminas-code": {
         "version": "3.5.0"
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef8b3223e261d45972f67ca25427187e",
+    "content-hash": "de736cef024fb3803b06085e481c7b3e",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1394,6 +1394,85 @@
                 "validator"
             ],
             "time": "2020-10-31T20:37:35+00:00"
+        },
+        {
+            "name": "fabricity/admin-bundle",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabricity/admin-bundle.git",
+                "reference": "6a337fee488b8ed10bab24fa3e99e6bd81d3e3c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabricity/admin-bundle/zipball/6a337fee488b8ed10bab24fa3e99e6bd81d3e3c5",
+                "reference": "6a337fee488b8ed10bab24fa3e99e6bd81d3e3c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4",
+                "symfony/dependency-injection": "^5.1",
+                "symfony/http-kernel": "^5.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.12.54"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Fabricity\\Bundle\\AdminBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/fabricity/admin-bundle/issues",
+                "source": "https://github.com/fabricity/admin-bundle/tree/develop"
+            },
+            "time": "2020-11-12T20:42:09+00:00"
+        },
+        {
+            "name": "fabricity/admin-lte-bundle",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabricity/admin-lte-bundle.git",
+                "reference": "24216f76080a2f098c41dc1fe8c00ebd74244ad0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabricity/admin-lte-bundle/zipball/24216f76080a2f098c41dc1fe8c00ebd74244ad0",
+                "reference": "24216f76080a2f098c41dc1fe8c00ebd74244ad0",
+                "shasum": ""
+            },
+            "require": {
+                "fabricity/admin-bundle": "dev-develop",
+                "php": "^7.4",
+                "symfony/dependency-injection": "^5.1",
+                "symfony/http-kernel": "^5.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.12.54"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Fabricity\\Bundle\\AdminLteBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/fabricity/admin-lte-bundle/issues",
+                "source": "https://github.com/fabricity/admin-lte-bundle/tree/develop"
+            },
+            "time": "2020-11-12T23:43:18+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -7629,15 +7708,17 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "fabricity/admin-lte-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
