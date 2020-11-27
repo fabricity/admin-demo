@@ -61,10 +61,8 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
-        $request->getSession()->set(
-            Security::LAST_USERNAME,
-            $credentials['username']
-        );
+
+        $request->getSession()->set(Security::LAST_USERNAME, $credentials['username']);
 
         return $credentials;
     }
@@ -88,7 +86,7 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
 
         if (!$user || !$user instanceof UserInterface) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('User could not be found.');
+            throw new CustomUserMessageAuthenticationException('Invalid credentials.');
         }
 
         return $user;
