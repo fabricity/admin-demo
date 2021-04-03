@@ -1,4 +1,6 @@
 {
+    "name": "fabricity/admin-demo",
+    "description": "Demo fabricity/admin",
     "type": "project",
     "license": "MIT",
     "require": {
