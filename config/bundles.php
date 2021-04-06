@@ -15,4 +15,5 @@ return [
     Fabricity\Bundle\AdminBundle\FabricityAdminBundle::class => ['all' => true],
     Fabricity\Bundle\AdminLteBundle\FabricityAdminLteBundle::class => ['all' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
+    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
 ];
