@@ -22,7 +22,7 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
+final class AdminLoginAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
 
@@ -30,9 +30,6 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
     private EntityManagerInterface $entityManager;
     private UserPasswordEncoderInterface $passwordEncoder;
     private UrlGeneratorInterface $urlGenerator;
-
-    public const HOME_ROUTE = 'app_dashboard';
-    public const LOGIN_ROUTE = 'app_login';
 
     public function __construct(
         EntityManagerInterface $entityManager,
@@ -98,17 +95,16 @@ final class FormLoginAuthenticator extends AbstractFormLoginAuthenticator implem
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate(self::HOME_ROUTE));
+        return new RedirectResponse($this->urlGenerator->generate('admin_dashboard'));
     }
 
     public function supports(Request $request): bool
     {
-        return self::LOGIN_ROUTE === $request->attributes->get('_route')
-            && $request->isMethod('POST');
+        return 'admin_login' === $request->attributes->get('_route') && $request->isMethod('POST');
     }
 
     protected function getLoginUrl(): string
     {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        return $this->urlGenerator->generate('admin_login');
     }
 }
