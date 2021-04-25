@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome on admin demo!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Welcome Admin-demo</h1>
+    <ul>
+        <li>Admin dashboard <code><a href="{{ path('admin_dashboard') }}">Dashboard</a></code></li>
+        <li>Login admin (admin/admin): <code><a href="{{ path('admin_login') }}">Login</a></code></li>
+    </ul>
+</div>
+{% endblock %}

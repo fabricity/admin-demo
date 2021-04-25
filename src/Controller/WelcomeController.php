@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 final class WelcomeController extends AbstractController
 {
     /**
-     * @Route("/", name="app_dashboard")
+     * @Route("/", name="app_welcome")
      */
     public function index(): Response
     {
-        return $this->render('app/index.html.twig', [
+        return $this->render('welcome.html.twig', [
             'controller_name' => 'AppController',
         ]);
     }

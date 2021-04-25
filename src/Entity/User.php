@@ -31,6 +31,13 @@ class User implements UserInterface
      */
     private string $password;
 
+    /**
+     * @var string[]
+     *
+     * @ORM\Column(type="json")
+     */
+    private array $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,12 +67,21 @@ class User implements UserInterface
         return $this;
     }
 
+    public function addRole(string $role): self
+    {
+        if (!\in_array($role, $this->roles, true)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
     /**
      * @return string[]
      */
     public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        return \array_unique($this->roles);
     }
 
     public function getSalt(): ?string

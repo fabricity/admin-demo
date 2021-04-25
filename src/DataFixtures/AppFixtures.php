@@ -21,7 +21,9 @@ final class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $user = new User();
-        $user->setUsername('admin');
+        $user
+            ->setUsername('admin')
+            ->addRole('ROLE_ADMIN');
 
         $password = $this->encoder->encodePassword($user, 'admin');
         $user->setPassword($password);
